@@ -74,8 +74,8 @@ def get_container_uptime(container_id):
             return f"{years:2d} y"
             
     except Exception:
-        # Fallback to parsing the status string
-        return parse_status_for_time(container.get("Status", ""))
+        # Fallback to parsing the status string - need to get status from somewhere
+        return "   ?"
 
 def parse_status_for_time(status):
     """Fallback: parse time from status string"""
@@ -189,8 +189,8 @@ def main():
             "status": simple_status
         })
     
-    # Sort by group, then by name within group
-    container_data.sort(key=lambda x: (x["group"], x["name"]))
+    # Sort by workdir first, then by name within same workdir
+    container_data.sort(key=lambda x: (x["workdir"], x["name"]))
     
     console = Console()
     
