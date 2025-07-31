@@ -1,0 +1,8 @@
+[project]
+name = "docker-formatting"
+version = "0.1.0"
+dependencies = [
+    "rich",
+]
+requires-python = ">=3.8"
+
